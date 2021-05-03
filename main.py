@@ -12,6 +12,7 @@ text = "Rasberry pi hosted website for iot project."
 
 # get login creds from creds.json
 def getCreds():
+    print("getting creds")
     data = None
     with open("creds.json") as json_file:
         data = json.load(json_file)
@@ -21,6 +22,8 @@ def getCreds():
 def start_browser_and_login():
 
     global driver
+
+    print("starting browser...")
 
     # start browser
     driver = webdriver.Chrome(service_log_path="NUL")
@@ -37,6 +40,8 @@ def start_browser_and_login():
 def login():
     global driver
 
+    print("login...")
+
     # get creds for login
     email, password = getCreds()
 
@@ -51,11 +56,15 @@ def login():
     )
     passwordField.click()
     passwordField.send_keys(password + Keys.ENTER)
-    time.sleep(2)
 
+    print("logged")
+
+    time.sleep(2)
 
 def go_to_pricing():
     global driver
+
+    print("go to ...")
 
     driver.get("https://pagekite.net/signup/?more=bw")
 
@@ -72,6 +81,8 @@ def go_to_pricing():
 def get_it_for_free():
     global driver
 
+    print("get free")
+
     message = driver.find_element_by_xpath(
         '//*[@id="div-pwyw"]/div[2]/div[4]/div/form/p[1]/textarea'
     )
@@ -85,6 +96,9 @@ def get_it_for_free():
         '//*[@id="div-pwyw"]/div[2]/div[4]/div/form/p[2]/input'
     )
     send.click()
+
+    print("done")
+
     time.sleep(2)
 
 
