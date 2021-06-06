@@ -2,6 +2,7 @@ import json
 import time
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,8 +26,13 @@ def start_browser_and_login():
 
     print("starting browser...")
 
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
     # start browser
-    driver = webdriver.Chrome(service_log_path="NUL")
+    driver = webdriver.Chrome(chrome_options=chrome_options, service_log_path="NUL")
     driver.get("https://pagekite.net/home/")
 
     # wait for page
@@ -60,6 +66,7 @@ def login():
     print("logged")
 
     time.sleep(2)
+
 
 def go_to_pricing():
     global driver
