@@ -88,9 +88,12 @@ def get_it_for_free():
     time.sleep(2)
 
 
-if __name__ == "__main__":
-
+def main():
     start_browser_and_login()
     go_to_pricing()
     get_it_for_free()
     driver.close()
+
+
+if __name__ == "__main__":
+    main()

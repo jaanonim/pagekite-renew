@@ -2,3 +2,5 @@ env
 .vscode
 creds.json
 chromedriver.exe
+settings.json
+__pycache__
