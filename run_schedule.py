@@ -52,7 +52,7 @@ def mainL():
 
     while True:
         schedule.run_pending()
-        time.sleep(1000)
+        time.sleep(1)
 
 
 if __name__ == "__main__":
